@@ -52,7 +52,13 @@ int main(void)
     SetTargetFPS(60);               // Set our game to run at 60 frames-per-second
     //--------------------------------------------------------------------------------------
 
+
+    //Cargamos los assets
+    Texture2D texture = LoadTexture("resources/gato.png");        // Texture loading
+
+
     // Main game loop
+
     static double x= 120, y = 35;
     static double speed_x = 2, speed_y = 2;
 
@@ -81,10 +87,10 @@ int main(void)
 
         ClearBackground(RAYWHITE);
 
-        DrawText("Congrats! You created your first window!", 190, 200, 20, LIGHTGRAY);
-
+        DrawText("Congrats! You created your first window!", 190, 200, 20, DARKBLUE);
+        DrawTexture(texture, screenWidth / 2 - texture.width / 2, screenHeight / 2 - texture.height / 2, WHITE);
        
-        DrawCircle(x, y, 35, DARKBLUE);
+        DrawCircle(50, 50, 35, RED);
 
         EndDrawing();
         //----------------------------------------------------------------------------------
@@ -92,6 +98,7 @@ int main(void)
 
     // De-Initialization
     //--------------------------------------------------------------------------------------
+    UnloadTexture(texture);       // Texture unloading
     CloseAudioDevice();
     CloseWindow();        // Close window and OpenGL context
     //--------------------------------------------------------------------------------------
